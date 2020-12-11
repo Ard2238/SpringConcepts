@@ -1,6 +1,7 @@
 package com.spring.springconcepts;
 
 import com.spring.springconcepts.component.DemoBean;
+import com.spring.springconcepts.component.EmployeeBean;
 import com.spring.springconcepts.controller.HelloRestController;
 
 import org.slf4j.Logger;
@@ -18,7 +19,11 @@ public class SpringConceptsApplication {
         logger.debug("Welcome to the Spring Concepts");
         ApplicationContext context = SpringApplication.run(SpringConceptsApplication.class, args);
         logger.info("Checking Context : " + context.getBean(DemoBean.class));
-        System.out.println(context.getBean(HelloRestController.class));
-    }
 
+        logger.debug("@Autowire example:  ");
+        EmployeeBean employeeBean = context.getBean(EmployeeBean.class);
+        employeeBean.setEid(101);
+        employeeBean.setName("Abhishek");
+        employeeBean.showEmployeeDetails();
+    }
 }
